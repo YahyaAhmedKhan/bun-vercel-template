@@ -1,7 +1,6 @@
 import express from "express";
 
 const app = express();
-const port = 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -18,7 +17,14 @@ app.get("/api/status", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`\n✅ Express server is running!`);
-  console.log(`🔗 Local: http://localhost:${port}`);
-});
+// For local development
+if (process.env.NODE_ENV !== "production") {
+  const port = 3000;
+  app.listen(port, () => {
+    console.log(`\n✅ Express server is running!`);
+    console.log(`🔗 Local: http://localhost:${port}`);
+  });
+}
+
+// Export for Vercel serverless
+export default app;

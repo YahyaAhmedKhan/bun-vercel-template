@@ -1,4 +1,11 @@
 {
+  "name": "bun-template-vercel",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build": "bun build ./src/index.ts --target=node --outdir=dist --format=esm"
+  },
   "dependencies": {
     "express": "^5.2.1"
   },
